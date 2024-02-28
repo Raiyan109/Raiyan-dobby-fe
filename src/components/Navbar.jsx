@@ -1,6 +1,21 @@
 
-import { Link } from 'react-router-dom'
+import { useContext } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext';
 const Navbar = () => {
+    const { auth, setAuth } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const logout = () => {
+        // signOut(auth);
+        setAuth({
+            ...auth,
+            user: null,
+            token: ''
+        })
+        localStorage.removeItem('userId')
+        localStorage.removeItem('auth')
+        navigate('/login')
+    };
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -23,12 +38,9 @@ const Navbar = () => {
                     <button className="btn btn-ghost btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                     </button>
-                    <button className="btn btn-ghost btn-circle">
-                        <div className="indicator">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-                            <span className="badge badge-xs badge-primary indicator-item"></span>
-                        </div>
-                    </button>
+                    <button>{auth.user ? <button className="inline-flex text-neutral btn btn-accent border-0 py-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans" onClick={logout}>Logout</button> : <button className='inline-flex text-neutral btn btn-accent border-0 py-2 mt-2 px-6 focus:outline-none hover:bg-primary hover:text-secondary rounded text-lg font-OpenSans'>
+                        <NavLink to='/login'>Login</NavLink>
+                    </button>}</button>
                 </div>
             </div>
         </div>
