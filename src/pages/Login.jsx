@@ -1,9 +1,30 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const Login = () => {
-    const handleSubmit = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
+    const navigate = useNavigate()
+    const location = useLocation()
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const res = await axios.post('http://localhost:8000/api/users/login', {
+            email,
+            password,
+        })
+        navigate(location.state || '/')
+        const data = await res.data
+        console.log(data);
+
+        localStorage.setItem('userId', data.user._id)
+        localStorage.setItem('auth', JSON.stringify(res.data))
+        return data
     }
     return (
         <>
@@ -20,13 +41,19 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" required />
+                                <input type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="password" className="input input-bordered" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
