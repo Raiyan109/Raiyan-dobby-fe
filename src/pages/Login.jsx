@@ -18,7 +18,7 @@ const Login = () => {
             email,
             password,
         })
-        navigate(location.state || '/')
+        navigate(location.state || '/upload')
         const data = await res.data
         console.log(data);
 
