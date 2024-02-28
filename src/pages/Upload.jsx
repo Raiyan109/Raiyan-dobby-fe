@@ -40,8 +40,8 @@ const Upload = () => {
             setLoading(false);
             // Reset form fields
             setName('');
-
             setFile(null);
+            navigate('/show')
         } catch (error) {
             console.log(error);
             setLoading(false);
