@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -55,7 +55,9 @@ const Login = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="password" className="input input-bordered" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <div className="label-text-alt link link-hover text-xl">New user? go to
+                                        <Link to='/signup'>Sign up</Link>
+                                    </div>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
