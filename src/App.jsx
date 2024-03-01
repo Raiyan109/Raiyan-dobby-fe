@@ -1,6 +1,8 @@
 import { RouterProvider } from 'react-router-dom'
 import routes from './routes/routes'
 import { AuthContextProvider } from './context/AuthContext'
+import { ImageContextProvider } from './context/ImageContext'
+import './App.css'
 
 
 function App() {
@@ -8,7 +10,9 @@ function App() {
   return (
     <div>
       <AuthContextProvider>
-        <RouterProvider router={routes} />
+        <ImageContextProvider>
+          <RouterProvider router={routes} />
+        </ImageContextProvider>
       </AuthContextProvider>
     </div>
   )

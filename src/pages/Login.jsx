@@ -14,7 +14,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.post('http://localhost:8000/api/users/login', {
+        const res = await axios.post('https://raiyan-dobby-be.vercel.app/api/users/login', {
             email,
             password,
         })

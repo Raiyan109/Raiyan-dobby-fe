@@ -3,24 +3,15 @@ import { useContext, useEffect, useState } from "react";
 import DetailShow from "./DetailShow";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
+import { ImageContext } from "../context/ImageContext";
 
 const Show = () => {
-    const [images, setImages] = useState([])
-    const { auth } = useContext(AuthContext)
-    console.log(auth);
 
-    useEffect(() => {
-        (async () => {
-            const res = await axios.get('http://localhost:8000/api/users/single', {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    "Authorization": `Bearer ${auth?.token}`
-                }
-            })
-            console.log(res.data.data.images);
-            setImages(res?.data?.data?.images)
-        })()
-    }, [auth?.token])
+    const { auth } = useContext(AuthContext)
+    const { images } = useContext(ImageContext)
+    console.log(auth, images);
+
+
     return (
         <div className='mt-6'>
             <Navbar />
