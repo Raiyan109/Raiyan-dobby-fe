@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 const Upload = () => {
     const [name, setName] = useState('')
     const [file, setFile] = useState(null)
-    const [setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const { auth } = useContext(AuthContext)
 
