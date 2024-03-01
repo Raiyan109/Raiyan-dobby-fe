@@ -30,7 +30,7 @@ const Upload = () => {
 
         try {
             setLoading(true);
-            const res = await axios.post('http://localhost:8000/api/images/create', formData, {
+            const res = await axios.post('https://raiyan-dobby-be.onrender.com/api/images/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": `Bearer ${auth?.token}`

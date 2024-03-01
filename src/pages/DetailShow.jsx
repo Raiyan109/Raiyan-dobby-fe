@@ -5,7 +5,7 @@ const DetailShow = ({ image }) => {
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src={`http://localhost:8000/${photo}`} alt="Shoes" /></figure>
+                <figure><img src={`https://raiyan-dobby-be.onrender.com/${photo}`} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
 

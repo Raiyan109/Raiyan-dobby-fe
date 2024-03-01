@@ -13,7 +13,7 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.post('https://raiyan-dobby-be.vercel.app/api/users/signup', {
+        const res = await axios.post('https://raiyan-dobby-be.onrender.com/api/users/signup', {
             name,
             email,
             password,

@@ -12,7 +12,7 @@ export const ImageContextProvider = ({ children }) => {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get('https://raiyan-dobby-be.vercel.app/api/users/single', {
+            const res = await axios.get('https://raiyan-dobby-be.onrender.com/api/users/single', {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": `Bearer ${auth?.token}`
