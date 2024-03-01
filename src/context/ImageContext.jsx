@@ -7,8 +7,10 @@ export const ImageContext = createContext()
 // eslint-disable-next-line react/prop-types
 export const ImageContextProvider = ({ children }) => {
     const [images, setImages] = useState([])
+    const [searchText, setSearchText] = useState('')
     const { auth } = useContext(AuthContext)
-    console.log(auth);
+
+
 
     useEffect(() => {
         (async () => {
@@ -22,8 +24,23 @@ export const ImageContextProvider = ({ children }) => {
             setImages(res?.data?.data?.images)
         })()
     }, [auth?.token])
+
+    const handleChange = (e) => {
+        setSearchText(e.target.value)
+        console.log(searchText);
+    }
+
+    //Our search filter function
+    const searchFilter = (array) => {
+        return array.filter(
+            (el) => el.name.toLowerCase().includes(searchText)
+        )
+    }
+
+    //Applying our search filter function to our array of countries recieved from the API
+    const filtered = searchFilter(images)
     const value = {
-        images, auth
+        images, auth, searchText, handleChange, filtered
     }
 
     return (

@@ -1,6 +1,8 @@
 
+// eslint-disable-next-line react/prop-types
 const DetailShow = ({ image }) => {
     console.log(image);
+    // eslint-disable-next-line react/prop-types, no-unused-vars
     const { _id, name, photo } = image
     return (
         <div>

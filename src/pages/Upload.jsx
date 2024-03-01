@@ -1,18 +1,18 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 
 const Upload = () => {
     const [name, setName] = useState('')
     const [file, setFile] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [setLoading] = useState(false)
 
     const { auth } = useContext(AuthContext)
 
     const navigate = useNavigate()
-    const location = useLocation()
+
 
     const handleChange = (e) => {
         setFile(e.target.files[0])
